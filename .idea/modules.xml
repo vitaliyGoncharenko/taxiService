@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BusinessLogic/BusinessLogic.iml" filepath="$PROJECT_DIR$/BusinessLogic/BusinessLogic.iml" />
-      <module fileurl="file://$PROJECT_DIR$/DAL/DAL.iml" filepath="$PROJECT_DIR$/DAL/DAL.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Model/Model.iml" filepath="$PROJECT_DIR$/Model/Model.iml" />
-      <module fileurl="file://$PROJECT_DIR$/TaxiCheckTravel.iml" filepath="$PROJECT_DIR$/TaxiCheckTravel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataAccessLayer.iml" filepath="$PROJECT_DIR$/DataAccessLayer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Model.iml" filepath="$PROJECT_DIR$/Model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/taxiCheckTravel.iml" filepath="$PROJECT_DIR$/taxiCheckTravel.iml" />
     </modules>
   </component>
 </project>

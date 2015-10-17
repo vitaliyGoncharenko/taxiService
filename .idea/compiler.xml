@@ -22,16 +22,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="BusinessLogic" />
-        <module name="DAL" />
+        <module name="DataAccessLayer" />
         <module name="Model" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="BusinessLogic" target="1.5" />
-      <module name="DAL" target="1.5" />
+      <module name="DataAccessLayer" target="1.5" />
       <module name="Model" target="1.5" />
-      <module name="TaxiCheckTravel" target="1.5" />
+      <module name="taxiCheckTravel" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
