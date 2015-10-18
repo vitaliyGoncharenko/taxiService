@@ -1,15 +1,21 @@
 package taxiService.transfer;
 
+import taxiService.model.CalculationOrder;
 import taxiService.model.Driver;
+import taxiService.model.Order;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Vitaliy on 14.10.2015.
  */
-public class DriverDto {
+public class DriverDto extends BaseDto{
     private Long id;
     private String employee;
     private String carModel;
     private String carNumber;
+    private List<CalculationOrderDto> calculationOrderDtoList;
 
     public DriverDto() {
     }
@@ -19,6 +25,12 @@ public class DriverDto {
         this.employee = driver.getEmployee();
         this.carModel = driver.getCarModel();
         this.carNumber = driver.getCarNumber();
+        calculationOrderDtoList = new ArrayList<>();
+        List<CalculationOrder> calculationOrderList = driver.getAll(CalculationOrder.class);
+
+        for(CalculationOrder calculationOrder : calculationOrderList){
+            calculationOrderDtoList.add(new CalculationOrderDto(calculationOrder));
+        }
     }
 
     public Long getId() {

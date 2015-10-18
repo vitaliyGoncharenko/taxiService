@@ -1,16 +1,21 @@
 package taxiService.transfer;
 
+import taxiService.model.Bonuses;
 import taxiService.model.Customer;
+import taxiService.model.Order;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Vitaliy on 14.10.2015.
  */
-public class CustomerDto {
+public class CustomerDto extends BaseDto{
     private Long id;
     private String fullName;
     private Long phoneNumber;
-    private Long bonusesId;
-//    private Long discount;
+    private BonusesDto bonusesDto;
+    private List<OrderDto> orderDtoList;
 
     public CustomerDto() {
     }
@@ -19,8 +24,13 @@ public class CustomerDto {
         this.id = customer.getId();
         this.fullName = customer.getFullName();
         this.phoneNumber = customer.getPhoneNumber();
-        this.bonusesId = customer.getBonusesId();
-//        this.discount = customer.getDiscount();
+        orderDtoList = new ArrayList<>();
+        List<Order> orderList = customer.getAll(Order.class);
+
+        for(Order order : orderList){
+            orderDtoList.add(new OrderDto(order));
+        }
+        bonusesDto= new BonusesDto(customer.getAll(Bonuses.class).get(0));
     }
 
     public Long getId() {
@@ -47,19 +57,4 @@ public class CustomerDto {
         this.phoneNumber = phoneNumber;
     }
 
-    public Long getBonusesId() {
-        return bonusesId;
-    }
-
-    public void setBonusesId(Long bonusesId) {
-        this.bonusesId = bonusesId;
-    }
-//
-//    public Long getDiscount() {
-//        return discount;
-//    }
-//
-//    public void setDiscount(Long discount) {
-//        this.discount = discount;
-//    }
 }

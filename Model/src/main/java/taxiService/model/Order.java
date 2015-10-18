@@ -1,6 +1,7 @@
 package taxiService.model;
 
 import org.javalite.activejdbc.Model;
+import org.javalite.activejdbc.annotations.BelongsTo;
 import org.javalite.activejdbc.annotations.Table;
 import taxiService.transfer.OrderDto;
 
@@ -10,6 +11,7 @@ import java.sql.Timestamp;
  * Created by Vitaliy on 14.10.2015.
  */
 @Table("order")
+@BelongsTo(parent = Customer.class, foreignKeyName = "customer_id")
 public class Order extends Model {
 
     public Long getId() {
@@ -20,20 +22,12 @@ public class Order extends Model {
         setLong("id",id);
     }
 
-    public Long getCustomer_id() {
-        return getLong("customer_id");
-    }
-
-    public void setCustomer_id(Long customer_id) {
-        setLong("customr_id", customer_id);
-    }
-
-    public Long getCalculationOrder_id() {
+    public Long getCalculationOrderId() {
         return getLong("calculationOrder_id");
     }
 
-    public void setCalculationOrder_id(Long calculationOrder_id) {
-        setLong("calculationOrder_id",calculationOrder_id);
+    public void setCalculationOrderId(Long calculationOrderId) {
+        setLong("calculationOrder_id",calculationOrderId);
     }
 
     public String getDepartureAddress() {
@@ -58,6 +52,14 @@ public class Order extends Model {
 
     public void setCurrentDate(Timestamp currentDate) {
         setTimestamp("currentDate",currentDate);
+    }
+
+    public Long getCustomerId() {
+        return getLong("customer_id");
+    }
+
+    public void setCustomerId(Long customerId) {
+        setLong("customr_id", customerId);
     }
 
     public OrderDto toDto(){

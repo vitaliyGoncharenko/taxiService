@@ -1,6 +1,8 @@
 package taxiService.model;
 
 import org.javalite.activejdbc.Model;
+import org.javalite.activejdbc.annotations.BelongsTo;
+import org.javalite.activejdbc.annotations.BelongsToParents;
 import org.javalite.activejdbc.annotations.Table;
 
 import java.sql.Timestamp;
@@ -9,6 +11,10 @@ import java.sql.Timestamp;
  * Created by Vitaliy on 14.10.2015.
  */
 @Table("calculationOrder")
+@BelongsToParents({
+        @BelongsTo(parent = Driver.class, foreignKeyName = "driver_id"),
+        @BelongsTo(parent = Order.class, foreignKeyName = "order_id")
+})
 public class CalculationOrder extends Model {
 
     public Long getId() {
@@ -67,11 +73,19 @@ public class CalculationOrder extends Model {
         setDouble("price", price);
     }
 
-    public Long getDriver_id() {
+    public Long getDriverId() {
         return getLong("driver_id");
     }
 
-    public void setDriver_id(Long driver_id) {
-        setLong("driver_id", driver_id);
+    public void setDriverId(Long driverId) {
+        setLong("driver_id", driverId);
+    }
+
+    public Long getOrderId() {
+        return getLong("order_id");
+    }
+
+    public void setOrderId(Long orderId) {
+        setLong("order_id", orderId);
     }
 }

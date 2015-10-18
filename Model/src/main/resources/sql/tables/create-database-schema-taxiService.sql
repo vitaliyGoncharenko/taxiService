@@ -20,26 +20,37 @@ USE `taxiService`;
 
 
 -- -----------------------------------------------------
+-- Table `taxiService`.`bonuses`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `taxiService`.`bonuses` ;
+
+CREATE TABLE IF NOT EXISTS `taxiService`.`bonuses` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `countBonuses` INT(11) DEFAULT null,
+  `discount` INT (45) DEFAULT NULL,
+  `customer_id` INT(11) NOT NULL UNIQUE,
+  PRIMARY KEY (`id`),
+  INDEX `fk_taxiService_customer_idx` (`customer_id` ASC),
+  CONSTRAINT `fk_taxiService_customer`
+  FOREIGN KEY (`customer_id`)
+  REFERENCES `taxiService`.`customer` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+  ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `taxiService`.`customer`
 -- -----------------------------------------------------
 
 DROP TABLE IF EXISTS `taxiService`.`customer`;
 
 CREATE TABLE `taxiService`.`customer` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT UNIQUE ,
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `fullName` VARCHAR (45) DEFAULT NULL,
   `phoneNumber` INT(11) DEFAULT NULL,
-  `bonuses_id` INT(11) DEFAULT NULL UNIQUE,
-#   `discount` INT(11) DEFAULT NULL,
-#   `countBonuses_id` INT(11) NOT NULL ,
-  PRIMARY KEY (`id`),
-  INDEX `fk_taxiService_idx` (`bonuses_id` ASC),
-  CONSTRAINT `fk_taxiService_bonuses1`
-  FOREIGN KEY (`bonuses_id`)
-  REFERENCES `taxiService`.`bonuses` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+  PRIMARY KEY (`id`))
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -50,30 +61,23 @@ DROP TABLE IF EXISTS `taxiService`.`order` ;
 CREATE TABLE IF NOT EXISTS `taxiService`.`order` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `customer_id` INT(11) NOT NULL,
-  `calculationOrder_id` INT(11) NOT NULL UNIQUE ,
-  `departureAddress` VARCHAR(45) NULL,
-  `arrivalAddress` VARCHAR(45) NULL,
+  `departureAddress` VARCHAR(45) DEFAULT NULL,
+  `arrivalAddress` VARCHAR(45) DEFAULT NULL,
   `currentDate` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_taxiService_customer1_idx` (`customer_id` ASC),
+  INDEX `fk_taxiService_customer_id1x` (`customer_id` ASC),
   CONSTRAINT `fk_taxiService_customer1`
-    FOREIGN KEY (`customer_id`)
-    REFERENCES `taxiService`.`customer` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  INDEX `fk_taxiService_calculationOrder1_idx` (`calculationOrder_id` ASC),
-  CONSTRAINT `fk_taxiService_calculationOrder1`
-  FOREIGN KEY (`calculationOrder_id`)
-  REFERENCES `taxiService`.`calculationOrder` (`id`)
+  FOREIGN KEY (`customer_id`)
+  REFERENCES `taxiService`.`customer` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `taxiService`.`calculationOrder`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `taxiService`.`calculationOrder` ;
+DROP TABLE IF EXISTS `taxiService`.`calculationOrder`;
 
 CREATE TABLE IF NOT EXISTS `taxiService`.`calculationOrder` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -84,11 +88,18 @@ CREATE TABLE IF NOT EXISTS `taxiService`.`calculationOrder` (
   `rate` DOUBLE DEFAULT NULL,
   `price` DOUBLE DEFAULT NULL,
   `driver_id` INT(11) NOT NULL,
+  `order_id` INT(11) NOT NULL UNIQUE,
   PRIMARY KEY (`id`),
-  INDEX `fk_taxiService_driver1_idx` (`driver_id` ASC),
-  CONSTRAINT `fk_taxiService_driver1`
+  INDEX `fk_taxiService_driver_idx` (`driver_id` ASC),
+  CONSTRAINT `fk_taxiService_driver`
   FOREIGN KEY (`driver_id`)
   REFERENCES `taxiService`.`driver` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  INDEX `fk_taxiService_order_idx` (`order_id` ASC),
+  CONSTRAINT `fk_taxiService_order`
+  FOREIGN KEY (`order_id`)
+  REFERENCES `taxiService`.`order` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
   ENGINE = InnoDB;
@@ -104,18 +115,5 @@ CREATE TABLE IF NOT EXISTS `taxiService`.`driver` (
   `employee` VARCHAR(45) DEFAULT NULL,
   `carModel` VARCHAR(45) DEFAULT NULL,
   `carNumber` VARCHAR(45) DEFAULT NULL,
-  PRIMARY KEY (`id`))
-  ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `taxiService`.`bonuses`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `taxiService`.`bonuses` ;
-
-CREATE TABLE IF NOT EXISTS `taxiService`.`bonuses` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `countBonuses` INT(11) DEFAULT null,
-  `discount` INT (45) DEFAULT NULL,
   PRIMARY KEY (`id`))
   ENGINE = InnoDB;

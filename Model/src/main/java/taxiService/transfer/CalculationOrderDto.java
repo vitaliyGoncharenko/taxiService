@@ -3,11 +3,12 @@ package taxiService.transfer;
 import taxiService.model.CalculationOrder;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Created by Vitaliy on 14.10.2015.
  */
-public class CalculationOrderDto {
+public class CalculationOrderDto extends BaseDto{
     private Long id;
     private Long distance;
     private Timestamp travelTime;
@@ -15,7 +16,8 @@ public class CalculationOrderDto {
     private Timestamp arrivalTime;
     private Double rate;
     private Double price;
-    private Long driver_id;
+    private Long driverId;
+    private Long orderId;
 
     public CalculationOrderDto() {
     }
@@ -28,7 +30,8 @@ public class CalculationOrderDto {
         this.arrivalTime = calculationOrder.getArrivalTime();
         this.rate = calculationOrder.getRate();
         this.price = calculationOrder.getPrice();
-        this.driver_id = calculationOrder.getDriver_id();
+        this.driverId = calculationOrder.getDriverId();
+        this.orderId = calculationOrder.getOrderId();
     }
 
     public Long getId() {
@@ -87,11 +90,19 @@ public class CalculationOrderDto {
         this.price = price;
     }
 
-    public Long getDriver_id() {
-        return driver_id;
+    public Long getDriverId() {
+        return driverId;
     }
 
-    public void setDriver_id(Long driver_id) {
-        this.driver_id = driver_id;
+    public void setDriverId(Long driverId) {
+        this.driverId = driverId;
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 }

@@ -1,5 +1,7 @@
 package taxiService.transfer;
 
+import taxiService.model.Bonuses;
+import taxiService.model.CalculationOrder;
 import taxiService.model.Order;
 
 import java.sql.Timestamp;
@@ -7,25 +9,27 @@ import java.sql.Timestamp;
 /**
  * Created by Vitaliy on 14.10.2015.
  */
-public class OrderDto {
+public class OrderDto extends BaseDto{
 
     private Long id;
-    private Long customer_id;
-    private Long calculationOrder_id;
+    private Long customerId;
+    private Long calculationOrderId;
     private String departureAddress;
     private String arrivalAddress;
     private Timestamp currentDate;
+    private CalculationOrderDto calculationOrderDto;
 
     public OrderDto() {
     }
 
     public OrderDto(Order order) {
         this.id = order.getId();
-        this.customer_id = order.getCustomer_id();
-        this.calculationOrder_id = order.getCalculationOrder_id();
+        this.customerId = order.getCustomerId();
+        this.calculationOrderId = order.getCalculationOrderId();
         this.departureAddress = order.getDepartureAddress();
         this.arrivalAddress = order.getArrivalAddress();
         this.currentDate = order.getCurrentDate();
+        calculationOrderDto= new CalculationOrderDto(order.getAll(CalculationOrder.class).get(0));
     }
 
     public Long getId() {
@@ -36,20 +40,20 @@ public class OrderDto {
         this.id = id;
     }
 
-    public Long getCustomer_id() {
-        return customer_id;
+    public Long getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(Long customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 
-    public Long getCalculationOrder_id() {
-        return calculationOrder_id;
+    public Long getCalculationOrderId() {
+        return calculationOrderId;
     }
 
-    public void setCalculationOrder_id(Long calculationOrder_id) {
-        this.calculationOrder_id = calculationOrder_id;
+    public void setCalculationOrderId(Long calculationOrderId) {
+        this.calculationOrderId = calculationOrderId;
     }
 
     public String getDepartureAddress() {

@@ -5,11 +5,12 @@ import taxiService.model.Bonuses;
 /**
  * Created by Vitaliy on 14.10.2015.
  */
-public class BonusesDto {
+public class BonusesDto extends BaseDto{
 
     private Long id;
     private Long countBonuses;
     private Long discount;
+    private Long customerId;
 
     public BonusesDto() {
     }
@@ -18,6 +19,7 @@ public class BonusesDto {
         this.id = bonuses.getId();
         this.countBonuses = bonuses.getCountBonuses();
         this.discount = bonuses.getDiscount();
+        this.customerId = bonuses.getCustomerId();
     }
 
     public Long getId() {
@@ -42,5 +44,13 @@ public class BonusesDto {
 
     public void setDiscount(Long discount) {
         this.discount = discount;
+    }
+
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 }
