@@ -17,18 +17,24 @@
       <profile default="true" name="Default" enabled="false">
         <processorPath useClasspath="true" />
       </profile>
-      <profile default="false" name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+      <profile default="false" name="Annotation profile for Model" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="Model" />
+      </profile>
+      <profile default="false" name="Annotation profile for DataAccessLayer" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="DataAccessLayer" />
-        <module name="Model" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="DataAccessLayer" target="1.5" />
-      <module name="Model" target="1.5" />
+      <module name="DataAccessLayer" target="1.7" />
+      <module name="Model" target="1.7" />
       <module name="taxiCheckTravel" target="1.5" />
     </bytecodeTargetLevel>
   </component>
