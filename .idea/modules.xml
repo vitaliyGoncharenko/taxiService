@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DataAccessLayer.iml" filepath="$PROJECT_DIR$/DataAccessLayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/Model.iml" filepath="$PROJECT_DIR$/Model.iml" />
-      <module fileurl="file://$PROJECT_DIR$/taxiCheckTravel.iml" filepath="$PROJECT_DIR$/taxiCheckTravel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TaxiCheckTravel.iml" filepath="$PROJECT_DIR$/TaxiCheckTravel.iml" />
     </modules>
   </component>
 </project>
