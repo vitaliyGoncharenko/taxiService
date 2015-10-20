@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Vitaliy on 17.10.2015.
  */
 public interface ITemplateDao <T extends BaseDto>{
-    Model get(String templateName);
+//    Model get(String templateName);
 
     Model get(Long id);
 
