@@ -15,7 +15,7 @@ public interface ITemplateDao <T extends BaseDto>{
 
     Model create(T dto);
 
-    void delete(String templateName);
+    void deleteAll();
 
     void update(T dto);
 

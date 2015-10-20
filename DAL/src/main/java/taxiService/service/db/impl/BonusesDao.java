@@ -13,8 +13,8 @@ import java.util.List;
  * Created by Vitaliy on 17.10.2015.
  */
 public class BonusesDao implements ITemplateDao<BonusesDto> {
-    public Model get(String templateName) {
-        return Bonuses.findFirst("countBonuses", templateName);
+    public Model get(String countBonuses) {
+        return Bonuses.findFirst("countBonuses", countBonuses);
     }
 
     public Model get(Long id) {
@@ -30,25 +30,33 @@ public class BonusesDao implements ITemplateDao<BonusesDto> {
         if (bonuses.getCustomerId() != null) {
             bonuses.setParent(Customer.findById(bonusesDto.getCustomerId()));
         }
+
         bonuses.saveIt();
         return bonuses;
     }
 
-    public void delete(String templateName) {
-
+    public void deleteAll() {
+        List<Bonuses> bonusesList = Bonuses.findAll();
+        for (Bonuses bonuses : bonusesList) {
+            bonuses.deleteCascadeShallow();
+        }
     }
 
     @Override
-    public void update(BonusesDto dto) {
-
+    public void update(BonusesDto bonusesDto) {
+        Bonuses bonuses = Bonuses.findById(bonusesDto.getId());
+        bonuses.setDiscount(bonusesDto.getDiscount());
+        bonuses.setCountBonuses(bonusesDto.getCountBonuses());
+        bonuses.setCustomerId(bonusesDto.getCustomerId());
     }
 
 
     public void delete(Long id) {
-
+        Bonuses bonuses = Bonuses.findById(id);
+        bonuses.deleteCascadeShallow();
     }
 
-    public List<? extends Model> getAll() {
-        return null;
+    public List<Bonuses> getAll() {
+        return Bonuses.findAll();
     }
 }
