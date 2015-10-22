@@ -31,11 +31,20 @@
         <processorPath useClasspath="true" />
         <module name="DataAccessLayer" />
       </profile>
+      <profile default="false" name="Annotation profile for BusinessLogic" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="BusinessLogic" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="BusinessLogic" target="1.7" />
       <module name="DataAccessLayer" target="1.7" />
       <module name="Model" target="1.7" />
       <module name="taxiCheckTravel" target="1.5" />
+      <module name="TaxiCheckTravel" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
