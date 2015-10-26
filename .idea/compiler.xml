@@ -38,6 +38,13 @@
         <processorPath useClasspath="true" />
         <module name="BusinessLogic" />
       </profile>
+      <profile default="false" name="Annotation profile for WebUi" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="WebUi" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="BusinessLogic" target="1.7" />
@@ -45,6 +52,7 @@
       <module name="Model" target="1.7" />
       <module name="taxiCheckTravel" target="1.5" />
       <module name="TaxiCheckTravel" target="1.5" />
+      <module name="WebUi" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

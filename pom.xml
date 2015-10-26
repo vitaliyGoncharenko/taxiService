@@ -12,6 +12,7 @@
         <module>BusinessLogic</module>
         <module>DAL</module>
         <module>Model</module>
+        <module>WebUi</module>
     </modules>
 
     <properties>
@@ -102,6 +103,13 @@
                 <groupId>org.javalite</groupId>
                 <artifactId>activejdbc</artifactId>
                 <version>${activejdbc.version}</version>
+            </dependency>
+
+            <!-- DataBase Connection Pool Implimentation -->
+            <dependency>
+                <groupId>com.zaxxer</groupId>
+                <artifactId>HikariCP-java6</artifactId>
+                <version>${hikaricp.version}</version>
             </dependency>
 
             <!-- loggining -->

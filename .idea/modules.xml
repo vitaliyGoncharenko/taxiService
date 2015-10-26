@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/DataAccessLayer.iml" filepath="$PROJECT_DIR$/DataAccessLayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/Model.iml" filepath="$PROJECT_DIR$/Model.iml" />
       <module fileurl="file://$PROJECT_DIR$/TaxiCheckTravel.iml" filepath="$PROJECT_DIR$/TaxiCheckTravel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WebUi/WebUi.iml" filepath="$PROJECT_DIR$/WebUi/WebUi.iml" />
     </modules>
   </component>
 </project>
